@@ -1,26 +1,23 @@
 ---
-title: "Manuscript Title"
+title: "fcoex: using coexpression to explore cell type diversity in scRNA-seq data "
 keywords:
-  - markdown
-  - publishing
-  - manubot
+  - cell types
+  - coexpression
+  - fcoex
 lang: en-US
+thumbnail: content/images/name.png
 authors:
-  - github: johndoe
-    name: John Doe
-    initials: JD
-    orcid: XXXX-XXXX-XXXX-XXXX
-    twitter: johndoe
-    email: john.doe@something.com
+  - github: lubianat
+    name: Tiago Lubiana 
+    initials: TL
+    orcid: 0000-0003-2473-2313
+    email: tiago.lubiana.alves@usp.br
     affiliations:
-      - Department of Something, University of Whatever
-    funders:
-      - Grant XXXXXXXX
-  - github: janeroe
-    name: Jane Roe
-    initials: JR
-    orcid: XXXX-XXXX-XXXX-XXXX
-    email: jane.roe@whatever.edu
+      - Department of Clinical and Toxicological Analyses, School of Pharmaceutical Sciences, University of São Paulo, São Paulo, Brazil
+  - github: 
+    name: Helder I Nakaya 
+    initials: HIN
+    orcid: 0000-0001-5297-9108
+    email: hnakaya@usp.br
     affiliations:
-      - Department of Something, University of Whatever
-      - Department of Whatever, University of Something
+      - Department of Clinical and Toxicological Analyses, School of Pharmaceutical Sciences, University of São Paulo, São Paulo, Brazil
