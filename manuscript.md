@@ -39,13 +39,13 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://lubianat.github.io/fcoex_report/" />
   <meta name="citation_pdf_url" content="https://lubianat.github.io/fcoex_report/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://lubianat.github.io/fcoex_report/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://lubianat.github.io/fcoex_report/v/2758d03be0c9ef6daec73321a125510731707a28/" />
-  <meta name="manubot_html_url_versioned" content="https://lubianat.github.io/fcoex_report/v/2758d03be0c9ef6daec73321a125510731707a28/" />
-  <meta name="manubot_pdf_url_versioned" content="https://lubianat.github.io/fcoex_report/v/2758d03be0c9ef6daec73321a125510731707a28/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://lubianat.github.io/fcoex_report/v/7f23a9ca45136a46abca1f8a04b318058d4e6a61/" />
+  <meta name="manubot_html_url_versioned" content="https://lubianat.github.io/fcoex_report/v/7f23a9ca45136a46abca1f8a04b318058d4e6a61/" />
+  <meta name="manubot_pdf_url_versioned" content="https://lubianat.github.io/fcoex_report/v/7f23a9ca45136a46abca1f8a04b318058d4e6a61/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
-  <meta property="og:image" content="https://github.com/lubianat/fcoex_report/raw/2758d03be0c9ef6daec73321a125510731707a28/content/images/name.png" />
-  <meta property="twitter:image" content="https://github.com/lubianat/fcoex_report/raw/2758d03be0c9ef6daec73321a125510731707a28/content/images/name.png" />
+  <meta property="og:image" content="https://github.com/lubianat/fcoex_report/raw/7f23a9ca45136a46abca1f8a04b318058d4e6a61/content/images/name.png" />
+  <meta property="twitter:image" content="https://github.com/lubianat/fcoex_report/raw/7f23a9ca45136a46abca1f8a04b318058d4e6a61/content/images/name.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
   <link rel="mask-icon" href="https://manubot.org/safari-pinned-tab.svg" color="#ad1457" />
   <meta name="theme-color" content="#ad1457" />
@@ -65,9 +65,9 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://lubianat.github.io/fcoex_report/v/2758d03be0c9ef6daec73321a125510731707a28/))
+([permalink](https://lubianat.github.io/fcoex_report/v/7f23a9ca45136a46abca1f8a04b318058d4e6a61/))
 was automatically generated
-from [lubianat/fcoex_report@2758d03](https://github.com/lubianat/fcoex_report/tree/2758d03be0c9ef6daec73321a125510731707a28)
+from [lubianat/fcoex_report@7f23a9c](https://github.com/lubianat/fcoex_report/tree/7f23a9ca45136a46abca1f8a04b318058d4e6a61)
 on May 4, 2021.
 </em></small>
 

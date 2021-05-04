@@ -44,7 +44,7 @@ mespab
 monocytes
 mononuclear
 Montoro
-msgn
+Msgn
 Nakaya
 NK
 Paulo
@@ -70,4 +70,4 @@ UMAP
 understandability
 variatino
 Yi
-Zebrafish
+zebrafish
