@@ -39,13 +39,13 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://lubianat.github.io/fcoex_report/" />
   <meta name="citation_pdf_url" content="https://lubianat.github.io/fcoex_report/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://lubianat.github.io/fcoex_report/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://lubianat.github.io/fcoex_report/v/7f23a9ca45136a46abca1f8a04b318058d4e6a61/" />
-  <meta name="manubot_html_url_versioned" content="https://lubianat.github.io/fcoex_report/v/7f23a9ca45136a46abca1f8a04b318058d4e6a61/" />
-  <meta name="manubot_pdf_url_versioned" content="https://lubianat.github.io/fcoex_report/v/7f23a9ca45136a46abca1f8a04b318058d4e6a61/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://lubianat.github.io/fcoex_report/v/0144d4f33b6f6b9ec0d0c2af17f18624eaab1901/" />
+  <meta name="manubot_html_url_versioned" content="https://lubianat.github.io/fcoex_report/v/0144d4f33b6f6b9ec0d0c2af17f18624eaab1901/" />
+  <meta name="manubot_pdf_url_versioned" content="https://lubianat.github.io/fcoex_report/v/0144d4f33b6f6b9ec0d0c2af17f18624eaab1901/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
-  <meta property="og:image" content="https://github.com/lubianat/fcoex_report/raw/7f23a9ca45136a46abca1f8a04b318058d4e6a61/content/images/name.png" />
-  <meta property="twitter:image" content="https://github.com/lubianat/fcoex_report/raw/7f23a9ca45136a46abca1f8a04b318058d4e6a61/content/images/name.png" />
+  <meta property="og:image" content="https://github.com/lubianat/fcoex_report/raw/0144d4f33b6f6b9ec0d0c2af17f18624eaab1901/content/images/name.png" />
+  <meta property="twitter:image" content="https://github.com/lubianat/fcoex_report/raw/0144d4f33b6f6b9ec0d0c2af17f18624eaab1901/content/images/name.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
   <link rel="mask-icon" href="https://manubot.org/safari-pinned-tab.svg" color="#ad1457" />
   <meta name="theme-color" content="#ad1457" />
@@ -65,9 +65,9 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://lubianat.github.io/fcoex_report/v/7f23a9ca45136a46abca1f8a04b318058d4e6a61/))
+([permalink](https://lubianat.github.io/fcoex_report/v/0144d4f33b6f6b9ec0d0c2af17f18624eaab1901/))
 was automatically generated
-from [lubianat/fcoex_report@7f23a9c](https://github.com/lubianat/fcoex_report/tree/7f23a9ca45136a46abca1f8a04b318058d4e6a61)
+from [lubianat/fcoex_report@0144d4f](https://github.com/lubianat/fcoex_report/tree/0144d4f33b6f6b9ec0d0c2af17f18624eaab1901)
 on May 4, 2021.
 </em></small>
 
@@ -101,7 +101,7 @@ on May 4, 2021.
 
 # Introduction
 
-Single-cell RNA sequencing (scRNA-seq) data analysis is at the core of the current quest to describe all human cell types.
+Single-cell RNA sequencing (scRNA-seq) data analysis is at the core of the current quest to describe all human cell types. [@wikidata:Q46368626]
 The annotation of cell events in scRNA-seq is commonly done using some variatino of the following steps (Luecken and Theis 2019):
 
 - Cluster cells
@@ -118,14 +118,15 @@ By biological relevance, we mean that similar cells might be found in other stud
 
 Here we focus on the second task: the discovery of new groups. 
 
-Final cluster annotations might point out rare, uniform populations, and have been used sucessfully to identify new types, like the airway ionocytes.  (Plasschaert et al. 2018)(Montoro et al. 2018).
+Final cluster annotations might point out rare, uniform population like the newly identified airway ionocytes. [@wikidata:Q57318689]  [@wikidata:Q57318689] 
 
 Another approach for proposing new classifications is to use hierarchical clustering, and thus provide a multilevel perspective on cell identity.
 An example is the description of the human middle temporal gyrus by Hodge et al ([@wikidata:Q71306466]), where a single-hierarchy ontology is provided both in a main figure and a supplementary file. 
 
 While such works are already groundbreaking, we identified a gap: current works seldom explore the multi-hierarchy clustering. 
 
-We are used to tree-like classifications, a natural side-effect of the macroevolutionary process of vertebrates. Cell type classifications, though, are not tree-like and many cell types have more than one direct parent. [@wikidata:Q21184168]  
+We are used to tree-like classifications, a natural side-effect of the macroevolutionary process of vertebrates. Cell type classifications, though, are not tree-like and many cell types have more than one direct parent. [@wikidata:Q21184168] [@wikidata:Q57318688]
+
 
 ```
 Figure not a tree ? 
@@ -139,32 +140,39 @@ Towards that goal, we build _fcoex_, an R package that builds coexpression netwo
 
 ## The fcoex method 
 
-The 
-The _fcoex_ tool was built bottom up from first principles, with a goal to avoid complicated algorithms and improve understandability. 
+The _fcoex_ tool was built bottom up from first principles, with a goal to avoid complicated algorithms and provide better understandability. 
 
-Our first goal was to come up with a smaller set of genes that globally captured the diversity of the dataset. 
+Our first goal was to come up with a smaller set of genes that globally captured the cellular diversity of a dataset. 
 
-Instead of using simply the highly variable genes, we decided to explore symmetrical uncertainty, a correlation metric from information theory that is used in the FCBF algorithm, a popular feature selection algorithm for machine learning with little previous use in biomedical sciences. 
+Instead of using simply the highly variable genes, we decided to explore _symmetrical uncertainty_, a different correlation metric.
 
-To calculate classical entropies we need categorized data, so we implemented in R a set of heuristics do binarized gene expressions (https://bioconductor.org/packages/release/bioc/html/FCBF.html). 
+Symmetrical uncertainty was serendipitously chosen after initial observations of features selected after applying the FCBF algorithm to scRNA-seq data. 
+
+FCBF, an acronym for "Fast Correlation Based Filter", is the name of a popular feature selection algorithm for machine learning (over 2700 Google Scholar citations) with little previous use in biomedical sciences (8 PubMed results for "FCBF" as of April 2021). 
+
+Symmetrical uncertainty relies on entropy (in the information theory sense), which relies on categories for calculation.
+
+Thus, we implemented in R a set of heuristics to binarize gene expressions (https://bioconductor.org/packages/release/bioc/html/FCBF.html) and allow
+processing. 
 
 Additionally, mutual information is a supervised method, meaning that before using it, we need to have labels for cells. 
-These labels can be obtained after a standard clustering pipeline, and help to convey information about the distribution of cells in the gene expression manifold. 
+These labels are obtained after running a standard clustering pipeline,  such as Seurat's (https://satijalab.org/seurat/articles/pbmc3k_tutorial.html) and convey information about the distribution of cells in the gene expression manifold. 
 
-Our pipeline, then, uses a binarized gene expression matrix and preliminary labels to select a set of genes that _globally_ separates cells from each other. 
+The first step of the pipeline uses a binarized gene expression matrix and preliminary labels to select a set of genes that _globally_ separates cells from each other. 
 
 These global markers are not necessarily specific to any cluster; they might be specific to multiple clusters, but still provide information to tell them apart.
 
-The selected features, however, share a degree of redundancy. Some pairs of genes have virtually identical expression patterns. 
+The selected features, however, share a degree of redundancy: some pairs of genes have virtually identical expression patterns. 
 
-FCBF feature selection is good at finding and removing that redundancy, what is good for later classification tasks. 
+The FCBF feature selection is good at finding and removing that redundancy, what is good for some machine learning algorithms. 
 
-We decided to take an advantage of this efficiency, and hacked the method: instead of removing genes with redundant patterns, we inverted the process so to identify gene coexpression modules.   
+We inverted the method to capture redundancy instead of removing so to identify gene coexpression modules and implemented the algorithm in the _fcoex_ package (see Methods for details).   
 
-The gene coexpression modules yielded by the default pipeline are small by design (10s of genes per module), so to facilitate manual exploration of the coexpression landscape.
+The gene coexpression modules yielded by the pipeline are small by design (10s of genes per module), so to facilitate manual exploration of the coexpression landscape.
 Moreover, each module has one "header" gene, which expression pattern is most representative of the genes in the module. 
 
-The ultimate goatl of the _fcoex_ pipeline, though, is not necessarily the modules, but use them to find biologically relevant populations. As modules contain correlated and anti-correlated genes, instead of 
+The ultimate goal of the _fcoex_ pipeline, though, is not necessarily the modules, but use them to find biologically relevant populations. 
+As modules contain correlated and anti-correlated genes, instead of 
 
 Re-clustering of cells. fcoex treats each module as a gene set. For each gene set, it re-classifies the cells using only their expression. Modules capture different biological functions, and provide complementary views on cell identities (Figure 1).
 
@@ -215,38 +223,30 @@ The second-best modules M2 presented a full pathway - a ligand, apela/Toddler, i
 # Materials and methods 
 
 ## Data 
-The pbmc3k dataset version 3.0.0 was downloaded via the SeuratData package (https://github.com/satijalab/seurat-data). The zebrafish development dataset was downloaded from the Broad Single Cell portal (https://singlecell.broadinstitute.org/single_cell/study/SCP162). Supplementary datasets for mouse Cd11c+ enriched spleen cells and E.7 embryo cells were obtained from Gene Expression Omnibus (GSE54006 and GSE109071, respectively)
+The pbmc3k dataset version 3.0.0 was downloaded via the SeuratData package (https://github.com/satijalab/seurat-data). The zebrafish development dataset was downloaded from the Broad Single Cell portal (https://singlecell.broadinstitute.org/single_cell/study/SCP162).
 
-Preprocessing 
+## Preprocessing 
 
-1.0.1 pbmc3k dataset preprocessing 
-pbmc3k data was loaded as a Seurat object from the data package. The expression matrix in the “data” slot and the labels in the “Idents” slotas input for creating the fcoex object. 
+### pbmc3k dataset preprocessing 
+pbmc3k data was loaded as a Seurat object from the data package. The expression matrix in the “data” slot and the labels in the “Idents” slot as input for creating the fcoex object. 
 
-1.0.2 Zebrafish and mouse datasets preprocessing 
+### Zebrafish dataset preprocessing 
 The data downloaded as log2 transformed counts were loaded in a Seurat object and preprocessed as in Seurat’s 3.0 default tutorial.  The resolution of the “FindClusters” function was arbitrarily set to yield 10-20 clusters. The normalized expression matrices, and the labels from the FindClusters function were used as input for the fcoex expression. Precise descriptions of the settings used are available in the source code for this paper on https://github.com/lubianat/fcoex_paper.
 
-Gene expression discretization 
+# Gene expression discretization 
 As the original Fast Correlation-Based Filter algorithm was constructed to deal with discrete data, we had to discretize gene counts. This was done with the fcoex package, version 1.0.0 (https://bioconductor.org/packages/fcoex/) We chose as a discretization metric a min-max-percent approach. For each gene, we took the lowest and the highest normalized value across the cells. We set a threshold at 25% of the max-min range. All the values below this threshold were considered “OFF,” and all above was “ON”. 
-For considerations about the discretization, please see the Supplementary Note.
 
+# Identification of fcoex modules 
 
-
-
-
-
-
-
-Identification of fcoex modules 
-
-1.0.3 Filtering genes by correlation to labels 
+## Filtering genes by correlation to labels 
 
 After the discretization step, genes were ranked by their correlation to labels (previously assigned by Seurat’s 3.1 FindClusters function). The correlation metric we used was the nonlinear Symmetrical Uncertainty, a variation of mutual information that maps the values between 0 (worst) and 1 (best), and accounts for differences in entropy ranges that arise when variables have a different number of classes (number of labels and number of gene classes). All downstream steps were performed only with the previously filtered genes
 
-1.0.4 Finding predominantly-correlated module seeds 
+## Finding predominantly-correlated module seeds 
 
 Modules were built in a bottom-up approach, first selecting genes predominantly correlated to the labels - a higher symmetrical uncertainty score towards the labels than towards any other gene. These genes, that are the output of the Fast Correlation-Based Filter algorithm, are called the module seeds.
 
-1.0.5 Building the coexpression modules/communities 
+## Building the coexpression modules/communities 
 
 Each module M is composed of one module seed (x)  predominantly-correlated to the label (L) and all the genes (Yi) more correlated to the seed than to the label. 
 
@@ -256,11 +256,12 @@ In other words, a gene Yi from all the genes in the Y universe of all genes in t
 1.1 Over-representation analysis 
 We performed an over-representation analysis on the human PBMC dataset by  Reactome Pathway gene sets processed locally prior to data analysis (“Reactome - a Curated Knowledgebase of Biological Pathways,” n.d.). Visualizations in the fcoex package were adapted from the CEMiTool R package (Russo et al. 2018)
 
-Reclustering of cells 
+## Reclustering of cells 
 
     To recluster the cells based on each module, we use the “recluster” function of the fcoex module. It uses the gene sets in each co-expression community to subset the expression table given originally as input. This reduced table contains the expression values regarding those genes for all the cells in the dataset.
     The distances between cells in this reduced matrix was calculated by the manhattan distance, and hierarchical clustering was performed. The metric used to calculate the linkage distance between groups was the “ward.D2” metric as implemented in the hclust function of the stats package in R 3.6.1. Two groups of cells were retrieved from each  clustering (the k parameter was set to 2) . The cluster with a higher expression of the module seed was labeled as SP (Seed Positive) and the complementary cluster received, then, the label SN (Seed Negative). Plots were generated via the DimPlot function of the Seurat package, substituting labels of the Seurat object for the new ones. 
-1.2 Code availability 
+
+## Code availability 
 The fcoex package, which performs the coexpression analysis is available at http://bioconductor.org/packages/fcoex/. The discretization and feature selection algorithms are available in a second package, FCBF (http://bioconductor.org/packages/FCBF/). All the analyses performed for this work are available at https://github.com/lubianat/fcoex paper. 
 
 
