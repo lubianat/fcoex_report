@@ -1,7 +1,7 @@
 # Output directory containing the formatted manuscript
 
 The [`gh-pages`](https://github.com/lubianat/fcoex_report/tree/gh-pages) branch hosts the contents of this directory at <https://lubianat.github.io/fcoex_report/>.
-The permalink for this webpage version is <https://lubianat.github.io/fcoex_report/v/f09ce13278540620afe5a67840ef23284d4d83f9/>.
+The permalink for this webpage version is <https://lubianat.github.io/fcoex_report/v/2758d03be0c9ef6daec73321a125510731707a28/>.
 To redirect to the permalink for the latest manuscript version at anytime, use the link <https://lubianat.github.io/fcoex_report/v/freeze/>.
 
 ## Files
@@ -35,4 +35,4 @@ Verifying timestamps with the `ots verify` command requires running a local bitc
 ## Source
 
 The manuscripts in this directory were built from
-[`f09ce13278540620afe5a67840ef23284d4d83f9`](https://github.com/lubianat/fcoex_report/commit/f09ce13278540620afe5a67840ef23284d4d83f9).
+[`2758d03be0c9ef6daec73321a125510731707a28`](https://github.com/lubianat/fcoex_report/commit/2758d03be0c9ef6daec73321a125510731707a28).
