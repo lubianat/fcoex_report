@@ -39,13 +39,13 @@ header-includes: |-
   <meta name="citation_fulltext_html_url" content="https://lubianat.github.io/fcoex_report/" />
   <meta name="citation_pdf_url" content="https://lubianat.github.io/fcoex_report/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://lubianat.github.io/fcoex_report/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://lubianat.github.io/fcoex_report/v/5dbab06704b392846b5eb3aca81dcc182cf029f6/" />
-  <meta name="manubot_html_url_versioned" content="https://lubianat.github.io/fcoex_report/v/5dbab06704b392846b5eb3aca81dcc182cf029f6/" />
-  <meta name="manubot_pdf_url_versioned" content="https://lubianat.github.io/fcoex_report/v/5dbab06704b392846b5eb3aca81dcc182cf029f6/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://lubianat.github.io/fcoex_report/v/6fbbf099dcd9e99543cdf30da193cc56451f3532/" />
+  <meta name="manubot_html_url_versioned" content="https://lubianat.github.io/fcoex_report/v/6fbbf099dcd9e99543cdf30da193cc56451f3532/" />
+  <meta name="manubot_pdf_url_versioned" content="https://lubianat.github.io/fcoex_report/v/6fbbf099dcd9e99543cdf30da193cc56451f3532/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
-  <meta property="og:image" content="https://github.com/lubianat/fcoex_report/raw/5dbab06704b392846b5eb3aca81dcc182cf029f6/content/images/name.png" />
-  <meta property="twitter:image" content="https://github.com/lubianat/fcoex_report/raw/5dbab06704b392846b5eb3aca81dcc182cf029f6/content/images/name.png" />
+  <meta property="og:image" content="https://github.com/lubianat/fcoex_report/raw/6fbbf099dcd9e99543cdf30da193cc56451f3532/content/images/name.png" />
+  <meta property="twitter:image" content="https://github.com/lubianat/fcoex_report/raw/6fbbf099dcd9e99543cdf30da193cc56451f3532/content/images/name.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
   <link rel="mask-icon" href="https://manubot.org/safari-pinned-tab.svg" color="#ad1457" />
   <meta name="theme-color" content="#ad1457" />
@@ -65,9 +65,9 @@ manubot-clear-requests-cache: false
 
 <small><em>
 This manuscript
-([permalink](https://lubianat.github.io/fcoex_report/v/5dbab06704b392846b5eb3aca81dcc182cf029f6/))
+([permalink](https://lubianat.github.io/fcoex_report/v/6fbbf099dcd9e99543cdf30da193cc56451f3532/))
 was automatically generated
-from [lubianat/fcoex_report@5dbab06](https://github.com/lubianat/fcoex_report/tree/5dbab06704b392846b5eb3aca81dcc182cf029f6)
+from [lubianat/fcoex_report@6fbbf09](https://github.com/lubianat/fcoex_report/tree/6fbbf099dcd9e99543cdf30da193cc56451f3532)
 on May 4, 2021.
 </em></small>
 
@@ -223,22 +223,33 @@ The second-best modules M2 presented a full pathway - a ligand, apela/Toddler, i
 
 
 # Discussion 
+
 Here we report a pipeline to explore cell type divesity via ranked, lean coexpression modules. 
-In contrast to unranked, large modules found by WGCNA-based pipelines (Langfelder and Horvath 2008a), fcoex modules makes it easy for domain experts to take advantage of the data. 
-For example, in this work, a master's student could pinpoint the 4 genes of the apela/Toddler pathway floating on an 18-gene gene set. He would surely have had more trouble finding a biologically meaningful association in a set with hundreds of genes.
 
-Recent works are starting to introduce coexpression analysis to the single-cell workflow. 
-The monocle R package (https://www.nature.com/articles/nbt.2859), widely used for pseudotime analysis, has implemented module-based analysis for its version 3, using the Louvain community detection algorithm to get modules from UMAP dimensions.(https://cole-trapnell-lab.github.io/monocle3/docs/differential/#gene-modules). 
-Another tool, MTGO-sc, exploits Gene Ontology information to aid in building modules, focusing on each cluters (Nazzicari et al. 2019). 
+The multilayered view on gene expression is the core conttribution of fcoex to the arsenal of tools. 
+
+We note that other methods are increasingly available for co-expression analysis of single cells. 
+
+The popular frameworks Scanpy(https://scanpy.readthedocs.io/en/stable/tutorials.html#, https://github.com/theislab/scanpy/issues/72 ), Seurat(https://satijalab.org/seurat/) and OSCA (from Bioconductor, https://bioconductor.org/books/release/OSCA/#) do not include specific instructions on using co-expressions works or providing multi-layer clustering, but the monocle R package (https://www.nature.com/articles/nbt.2859), widely used for pseudotime analysis, has implemented module-based analysis for its version 3, using the Louvain community detection algorithm to get modules from UMAP dimensions.(https://cole-trapnell-lab.github.io/monocle3/docs/differential/#gene-modules).
 
 
-Fcoex differs from previous works in two fundamental aspects: (1) it explicitly regroups the cells, and (2) it generates modules with negative correlations.
-The explicit regrouping hints at higher organization levels, which provide another window into the biologiclal divesity.
+A common option is to employ the WGCNA method [@wikidata:Q21284194] or its adaptations [@wikidata:Q62485122] to identify co-expression modules. 
+
+In principle, any of those modules could be used as input of multilayered clustering, and are alternatives for the first step of the fcoex pipeline. 
+We note, though, that in contrast to unranked, large modules found by previous pipelines , fcoex modules makes it easy for domain experts to take advantage of the data. 
+For example, in this work, a master's student could pinpoint the 4 genes of the apela/Toddler pathway floating on an 18-gene gene set.
+He would surely have had more trouble finding a biologically meaningful association in a set with hundreds of genes.
+
+Fcoex streamlines the path from dataset to coexpression modules and to multi layered populations.
+
 The "cell type forests" obtained with the parallel reclustering of cells sheds light at higher orders of classifications. 
-The approach supported our "rediscovery" of B-cells as both a cell type on their own, but also as a subclass of Antigen Presenting Cells. In that way, fcoex offers ways to explore data-driven classifications of cells, aligning itself with the challenges of the Human Cell Atlas and, specifically, of building ontologies of cell types in the single-cell era. (ADD REFERENCES)
+
+The approach supported our "rediscovery" of B-cells as both a cell type on their own, but also as a subclass of Antigen Presenting Cells.
+
+In that way, fcoex offers ways to explore data-driven classifications of cells, aligning itself with the challenges of the Human Cell Atlas and, specifically, of building ontologies of cell types in the single-cell era. (ADD REFERENCES)
 
 
-# Materials and methods 
+# Methods 
 
 ## Data 
 The pbmc3k dataset version 3.0.0 was downloaded via the SeuratData package (https://github.com/satijalab/seurat-data). The zebrafish development dataset was downloaded from the Broad Single Cell portal (https://singlecell.broadinstitute.org/single_cell/study/SCP162).
@@ -284,7 +295,7 @@ The fcoex package, which performs the coexpression analysis is available at http
 
 
 
-Acknowledgments 
+# Acknowledgments 
 We would like to thank Pedro Russo, Gustavo Ferreira and Lucas Cardozo for contributions to software development, as well as all members of the Computational Systems Biology Laboratory for discussions and feedback. This work was supported by the grant 2018/10257-2, São Paulo Research Foundation (FAPESP). 
 
 
