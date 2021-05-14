@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Tiago Lubiana" />
   <meta name="author" content="Helder I Nakaya" />
-  <meta name="dcterms.date" content="2021-05-04" />
+  <meta name="dcterms.date" content="2021-05-14" />
   <meta name="keywords" content="cell types, coexpression, fcoex" />
   <title>fcoex: using coexpression to explore cell type diversity in scRNA-seq data</title>
   <style>
@@ -29,8 +29,8 @@
   <meta name="citation_title" content="fcoex: using coexpression to explore cell type diversity in scRNA-seq data " />
   <meta property="og:title" content="fcoex: using coexpression to explore cell type diversity in scRNA-seq data " />
   <meta property="twitter:title" content="fcoex: using coexpression to explore cell type diversity in scRNA-seq data " />
-  <meta name="dc.date" content="2021-05-04" />
-  <meta name="citation_publication_date" content="2021-05-04" />
+  <meta name="dc.date" content="2021-05-14" />
+  <meta name="citation_publication_date" content="2021-05-14" />
   <meta name="dc.language" content="en-US" />
   <meta name="citation_language" content="en-US" />
   <meta name="dc.relation.ispartof" content="Manubot" />
@@ -49,13 +49,13 @@
   <meta name="citation_fulltext_html_url" content="https://lubianat.github.io/fcoex_report/" />
   <meta name="citation_pdf_url" content="https://lubianat.github.io/fcoex_report/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://lubianat.github.io/fcoex_report/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://lubianat.github.io/fcoex_report/v/6fbbf099dcd9e99543cdf30da193cc56451f3532/" />
-  <meta name="manubot_html_url_versioned" content="https://lubianat.github.io/fcoex_report/v/6fbbf099dcd9e99543cdf30da193cc56451f3532/" />
-  <meta name="manubot_pdf_url_versioned" content="https://lubianat.github.io/fcoex_report/v/6fbbf099dcd9e99543cdf30da193cc56451f3532/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://lubianat.github.io/fcoex_report/v/f1cd8ebc244cc817d8c5f072b4b1b76772b9c443/" />
+  <meta name="manubot_html_url_versioned" content="https://lubianat.github.io/fcoex_report/v/f1cd8ebc244cc817d8c5f072b4b1b76772b9c443/" />
+  <meta name="manubot_pdf_url_versioned" content="https://lubianat.github.io/fcoex_report/v/f1cd8ebc244cc817d8c5f072b4b1b76772b9c443/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
-  <meta property="og:image" content="https://github.com/lubianat/fcoex_report/raw/6fbbf099dcd9e99543cdf30da193cc56451f3532/content/images/name.png" />
-  <meta property="twitter:image" content="https://github.com/lubianat/fcoex_report/raw/6fbbf099dcd9e99543cdf30da193cc56451f3532/content/images/name.png" />
+  <meta property="og:image" content="https://github.com/lubianat/fcoex_report/raw/f1cd8ebc244cc817d8c5f072b4b1b76772b9c443/content/images/name.png" />
+  <meta property="twitter:image" content="https://github.com/lubianat/fcoex_report/raw/f1cd8ebc244cc817d8c5f072b4b1b76772b9c443/content/images/name.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
   <link rel="mask-icon" href="https://manubot.org/safari-pinned-tab.svg" color="#ad1457" />
   <meta name="theme-color" content="#ad1457" />
@@ -67,10 +67,10 @@
 </header>
 <p><small><em>
 This manuscript
-(<a href="https://lubianat.github.io/fcoex_report/v/6fbbf099dcd9e99543cdf30da193cc56451f3532/">permalink</a>)
+(<a href="https://lubianat.github.io/fcoex_report/v/f1cd8ebc244cc817d8c5f072b4b1b76772b9c443/">permalink</a>)
 was automatically generated
-from <a href="https://github.com/lubianat/fcoex_report/tree/6fbbf099dcd9e99543cdf30da193cc56451f3532">lubianat/fcoex_report@6fbbf09</a>
-on May 4, 2021.
+from <a href="https://github.com/lubianat/fcoex_report/tree/f1cd8ebc244cc817d8c5f072b4b1b76772b9c443">lubianat/fcoex_report@f1cd8eb</a>
+on May 14, 2021.
 </em></small></p>
 <h2 id="authors">Authors</h2>
 <ul>
@@ -91,105 +91,48 @@ Department of Clinical and Toxicological Analyses, School of Pharmaceutical Scie
 </ul>
 <h2 class="page_break_before" id="abstract">Abstract</h2>
 <h1 id="introduction">Introduction</h1>
-<p>Single-cell RNA sequencing (scRNA-seq) data analysis is at the core of the current quest to describe all human cell types. <span class="citation" data-cites="1GmbExweg">[<a href="#ref-1GmbExweg" role="doc-biblioref">1</a>]</span>
-The annotation of cell events in scRNA-seq is commonly done using some variatino of the following steps (Luecken and Theis 2019):</p>
+<p>Single-cell RNA sequencing (scRNA-seq) data analysis is at the core of the current quest to describe all human cell types. <span class="citation" data-cites="1GmbExweg">[<a href="#ref-1GmbExweg" role="doc-biblioref">1</a>]</span> The annotation of cell events in scRNA-seq is commonly done using some variation of the following steps <span class="citation" data-cites="WKbly37M">[<a href="#ref-WKbly37M" role="doc-biblioref">2</a>]</span>:</p>
 <ul>
-<li>Cluster cells</li>
-<li>Find clusters markers.</li>
+<li>Cluster cells,</li>
 <li>Annotate clusters based on known markers.</li>
 </ul>
-<p>The annotations are reported in legends alongside tSNE and UMAP plots, and in metadata files in columns that give each cell a single type label.</p>
-<p>Two of the tasks that scientists are interested in are (1) mapping cells in a dataset to <em>known</em> cell types and
-(2) discover <em>new</em> groupings with biological relevance.</p>
-<p>By biological relevance, we mean that similar cells might be found in other studies, and help building predictions about reality.</p>
-<p>Here we focus on the second task: the discovery of new groups.</p>
-<p>Final cluster annotations might point out rare, uniform population like the newly identified airway ionocytes. <span class="citation" data-cites="1FLFdI7Pq">[<a href="#ref-1FLFdI7Pq" role="doc-biblioref">2</a>]</span> <span class="citation" data-cites="1FLFdI7Pq">[<a href="#ref-1FLFdI7Pq" role="doc-biblioref">2</a>]</span></p>
-<p>Another approach for proposing new classifications is to use hierarchical clustering, and thus provide a multilevel perspective on cell identity.
-An example is the description of the human middle temporal gyrus by Hodge et al (<span class="citation" data-cites="MmLAPJkE">[<a href="#ref-MmLAPJkE" role="doc-biblioref">3</a>]</span>), where a single-hierarchy ontology is provided both in a main figure and a supplementary file.</p>
-<p>While such works are already groundbreaking, we identified a gap: current works seldom explore the multi-hierarchy clustering.</p>
-<p>We are used to tree-like classifications, a natural side-effect of the macroevolutionary process of vertebrates. Cell type classifications, though, are not tree-like and many cell types have more than one direct parent. <span class="citation" data-cites="1CI8uS6ka">[<a href="#ref-1CI8uS6ka" role="doc-biblioref">4</a>]</span> <span class="citation" data-cites="47qvifzh">[<a href="#ref-47qvifzh" role="doc-biblioref">5</a>]</span></p>
-<pre><code>Figure not a tree ? </code></pre>
+<p>Clusters (and their markers) are a prime tool for the discovery new groupings with biological relevance. Fine-grained Louvain clustering with can highlight out rare, uniform population like the newly identified airway ionocytes. <span class="citation" data-cites="1FLFdI7Pq">[<a href="#ref-1FLFdI7Pq" role="doc-biblioref">3</a>]</span> <span class="citation" data-cites="1FLFdI7Pq">[<a href="#ref-1FLFdI7Pq" role="doc-biblioref">3</a>]</span> Complementarily, hierarchical clustering provides multilevel perspective on cell identity, providing knowledge on upper cell classes, prone for ontology building<span class="citation" data-cites="MmLAPJkE">[<a href="#ref-MmLAPJkE" role="doc-biblioref">4</a>]</span>)</p>
+<p>While such methodologies are already powerful, we identified a gap: current works seldom explore the multi-hierarchy clustering. Biologists are used to tree-like; single-hierarchy classifications, such as the so-called tree-of-life. That tree-like structure rises as a natural side-effect of the macroevolutionary process of vertebrates, where species give rise to one (or more) others. Cell type classifications, however, are functional in essence <span class="citation" data-cites="paKiKTRS">[<a href="#ref-paKiKTRS" role="doc-biblioref">5</a>]</span> and, thus, do not need to be tree-like. In fact, formal ontologies of cell types (like the Cell Ontology) catalog many cell types with multiple direct parents. <span class="citation" data-cites="1CI8uS6ka">[<a href="#ref-1CI8uS6ka" role="doc-biblioref">6</a>]</span> <span class="citation" data-cites="47qvifzh">[<a href="#ref-47qvifzh" role="doc-biblioref">7</a>]</span></p>
 <p>Towards that goal, we build <em>fcoex</em>, an R package that builds coexpression networks as an scaffold for hypothesis generation about cell types, and describe its application to some datasets.</p>
 <h1 id="results">Results</h1>
 <h2 id="the-fcoex-method">The fcoex method</h2>
-<p>The <em>fcoex</em> tool was built bottom up from first principles, with a goal to avoid complicated algorithms and provide better understandability.</p>
-<p>Our first goal was to come up with a smaller set of genes that globally captured the cellular diversity of a dataset.</p>
-<p>Instead of using simply the highly variable genes, we decided to explore <em>symmetrical uncertainty</em>, a different correlation metric.</p>
-<p>Symmetrical uncertainty was serendipitously chosen after initial observations of features selected after applying the FCBF algorithm to scRNA-seq data.</p>
-<p>FCBF, an acronym for “Fast Correlation Based Filter”, is the name of a popular feature selection algorithm for machine learning (over 2700 Google Scholar citations) with little previous use in biomedical sciences (8 PubMed results for “FCBF” as of April 2021).</p>
-<p>Symmetrical uncertainty relies on entropy (in the information theory sense), which relies on categories for calculation.</p>
-<p>Thus, we implemented in R a set of heuristics to binarize gene expressions (https://bioconductor.org/packages/release/bioc/html/FCBF.html) and allow
-processing.</p>
-<p>Additionally, mutual information is a supervised method, meaning that before using it, we need to have labels for cells.
-These labels are obtained after running a standard clustering pipeline, such as Seurat’s (https://satijalab.org/seurat/articles/pbmc3k_tutorial.html) and convey information about the distribution of cells in the gene expression manifold.</p>
-<p>The first step of the pipeline uses a binarized gene expression matrix and preliminary labels to select a set of genes that <em>globally</em> separates cells from each other.</p>
-<p>These global markers are not necessarily specific to any cluster; they might be specific to multiple clusters, but still provide information to tell them apart.</p>
-<p>The selected features, however, share a degree of redundancy: some pairs of genes have virtually identical expression patterns.</p>
-<p>The FCBF feature selection is good at finding and removing that redundancy, what is good for some machine learning algorithms.</p>
-<p>We inverted the method to capture redundancy instead of removing so to identify gene coexpression modules and implemented the algorithm in the <em>fcoex</em> package (see Methods for details).</p>
+<p>The <em>fcoex</em> tool was built from first principles to provide better understandability. Our first goal was to develop a smaller set of genes that globally captured the cellular diversity of a dataset.</p>
+<p>For that, we decided to explore feature selection by <em>symmetrical uncertainty</em>, the correlation metric of FCBF, a popular feature selection algorithm for machine learning (over 2700 Google Scholar citations) with little previous use in biomedical sciences (8 PubMed results for “FCBF” as of April 2021).</p>
+<p>Symmetrical uncertainty relies on entropy (in the information-theory sense), which relies on categories for calculation. Thus, we implemented a set of heuristics to binarize gene expressions (https://bioconductor.org/packages/release/bioc/html/FCBF.html) which can be accessed via the <code>fcoex::discretize()</code> function.</p>
+<p>As mutual information is a supervised method, <code>fcoex</code> also needs pre-made cluster assignments obtained after running a standard scRNA-seq clustering pipeline. Cluster assignments convey information about the relations between cells and help to guide feature selection.</p>
+<p><code>Fcoex</code>, then, selects genes global markers, which might be specific to 1, 2, or more clusters; the common factor is that they provide information to tell clusters apart.</p>
+<p>To find the coexpression-module, we inverted the FCBF redundancy removal algorithm as a heuristic to find redundant (co-expressed) gene expression patterns. (see Supplementary Methods for details).</p>
 <p>The gene coexpression modules yielded by the pipeline are small by design (10s of genes per module), so to facilitate manual exploration of the coexpression landscape.
-Moreover, each module has one “header” gene, which expression pattern is most representative of the genes in the module.</p>
-<p>The ultimate goal of the <em>fcoex</em> pipeline, though, is not necessarily the modules, but use them to find biologically relevant populations.</p>
-<p>Modules contain correlated and anti-correlated genes, and thus might held signatures for two different populations.</p>
-<p>To find those populations, fcoex treats each module as a gene set. It then uses only the expression of genes in the module to re-classify the cells.</p>
-<p>After projecting the pipelines, we intende to verify if the modules captured different biological functions, and provide complementary views on cell identities to the ones provided by simply applying the Seurat clustering pipeline.</p>
+Each module has one “header” gene, which expression pattern is most representative of the genes in the module.</p>
+<p>The ultimate goal of the <em>fcoex</em> pipeline is not necessarily the modules but to find biologically relevant populations.</p>
+<p>Modules contain correlated and anti-correlated genes and thus might hold signatures for two different populations.</p>
+<p>Fcoex treats each module as a gene set to find cell populations. It then uses only the expression of genes in the module to re-classify the cells.</p>
+<p>After projecting the pipelines, we intend to verify if the modules captured complimentary views on cell identities comparatively to the Seurat clustering pipeline.</p>
 <div id="fig:overview" class="fignos">
 <figure>
 <img src="images/fcoex_overview.png" class="white" style="height:7in" alt="" /><figcaption><span>Figure 1:</span> Overview</figcaption>
 </figure>
 </div>
 <h2 id="fcoex-recovers-multi-hierarchy-of-blood-types">fcoex recovers multi-hierarchy of blood types</h2>
-<p>To validate the fcoex pipeline, we selected the well-known pbmc3k dataset from SeuratData, which contains around 2700 peripheral blood mononuclear cells (PBMC) with author-defined cluster labels (Figure 2A).
-The standard fcoex pipeline detected nine modules which, reassureingly, captured transcriptional pathways known to be active in different blood cells (Table A, SUPP FIGURE PBMC 3K). For example, module M8 contained cytotoxicity genes, as PRF1 and GZMA.
-he reclustering based on M8 split the dataset into cytotoxic (NK + CD8) and non-cytotoxic cells (Figure 2 B-C).
-M7 (CD79A) cluster corresponded to B cells, while M5 (HLA-DRB1) grouped monocytes, B cells, and dendritic cells, all known antigen-presenting cells (APC) (https://www.ebi.ac.uk/ols/ontologies/cl/terms?obo_id=CL:0000145).
-Of note, the APC populations are apart in the UMAP (Uniform Manifold Approximation and Projection for dimensional reduction)(McInnes et al. 2018) representation (Figure 2D), even though the relevance of the class is known acknowledged similarity might have gone unnoticed in the single-cell analysis without fcoex.
-In general, fcoex clusters are combinations of similar cell types of the original division (Figure 2E), one of which corresponds to a known cell class and the other to the complementary set of cells in the tissue.</p>
-<!-- Add figure 1 
-
-Figure 2. Fcoex modules infer PBMC populations with similar functions. a. UMAP visualization of the PBMC dataset b. Module M8, spearheaded by the gene CST7. Nodes represent genes, edges represent correlations by symmetrical uncertainty (see Methods) c. Clustering of the pbmc3k dataset based on the M8 module. d. Clusters derived from modules M5 (HLA-DRB1) and M7 (CD79A) .e. Assignment table showing the percentage of cells in each Seurat cluster that are contained in each seed-positive module. PBMC: Ṕeripheral Blood Mononuclear Cells; SP: Seed Positive; SN: Seed Negative
-
--->
-<p>## fcoex uncovers unknown populations in the zebrafish embryo</p>
-<p>After the proof of concept, e explored gene-gene interactions in more depth in a gastrulation dataset of zebrafish cells (75% epiboly, Figure 3 A)(Farrell et al. 2018). The 10 clusters fed to fcoex, though not corresponding to classic types, fed the algorithm with structure from the gene expression space. Using that structure, fcoex identified 8 modules (using default parameters) and the list of modules is displayed in Table B.</p>
-<!-- Add figure 3 
-
-
-
-Fig 3. Clusters highlight the dynamics of zebrafish embryo cells. A: 10 Clusters identified by Seurat in the Schier lab zebrafish dataset for the 75% epiboly stage. B: Different cluster assignments for cells in the dataset based on the genes in 1. C: Genes in the module M2 (SOX19A). D: Expression patterns for the gene APELA and receptors of its product, APLNRB and APLNRA, as well as a downstream factor, MESPAB. E: Model of how the products of the genes above might interact.
-
-
-
-
-
--->
-<p>The two top ranked modules offer gateways into exploring of zebrafish development biology.</p>
-<p>The top-ranked module M1 (MSGN1) harbored the genes msgn1, tbx16, and tbx6, all related to mesoderm development, a core task of gastrulation.
-In mice, Msgn1 signals via Tbx16(Chalamalasetty et al. 2014) and tbx6l and tbx16 (homologs of Tbx16) play a role together in shaping mesoderm development in zebrafish (Morrow et al. 2017).
-The population described by this module might be of interest for understanding how mesoderm unfolds.<br />
-The second-best modules M2 presented a full pathway - a ligand, apela/Toddler, its receptors, aplnrb, and aplnra, and a putative downstream factor, mespab ((Pauli et al. 2014)(Deshwar et al. 2016). The module contains anticorrelated genes, and the ligand and its receptors are enriched in opposing clusters (TableD, Figure 3C-E).</p>
+<p>To validate the fcoex pipeline, we selected the well-known pbmc3k dataset from SeuratData, which contains around 2700 peripheral blood mononuclear cells (PBMC) with author-defined cluster labels.</p>
+<p>The standard fcoex pipeline detected nine modules that capture different parts of the cellular diversity in the dataset.</p>
+<p>For example, module M8, containing cytotoxicity genes as PRF1 and GZMA, split the dataset into cytotoxic (NK and CD8) and non-cytotoxic cells. M2 (CD3D) split the dataset clearly in T-cells and non-T-cells. M5 (HLA-DRB1) grouped monocytes, B cells, and dendritic cells, all known antigen-presenting cells (APC) (https://www.ebi.ac.uk/ols/ontologies/cl/terms?obo_id=CL:0000145).</p>
+<p>In general, fcoex clusters combined biologically similar cell types of the original dataset. The clusterings, then, help to explore and classify upper cell classes by function. Even in that super well-studied dataset, <code>fcoex</code> provided a new light on the shared functionality of some NK cells and macrophages: they both markedly express the CD16-coding gene FCGR3A, whose product is a key player in Antibody-dependent cellular cytotoxicity (ADCC). Thus, a complete functional classification of cells might want to include an ’ADCC-performing cells" class.</p>
 <h1 id="discussion">Discussion</h1>
-<p>Here we report a pipeline to explore cell type divesity via ranked, lean coexpression modules.</p>
-<p>The multilayered view on gene expression is the core conttribution of fcoex to the arsenal of tools.</p>
-<p>We note that other methods are increasingly available for co-expression analysis of single cells.</p>
-<p>The popular frameworks Scanpy(https://scanpy.readthedocs.io/en/stable/tutorials.html#, https://github.com/theislab/scanpy/issues/72 ), Seurat(https://satijalab.org/seurat/) and OSCA (from Bioconductor, https://bioconductor.org/books/release/OSCA/#) do not include specific instructions on using co-expressions works or providing multi-layer clustering, but the monocle R package (https://www.nature.com/articles/nbt.2859), widely used for pseudotime analysis, has implemented module-based analysis for its version 3, using the Louvain community detection algorithm to get modules from UMAP dimensions.(https://cole-trapnell-lab.github.io/monocle3/docs/differential/#gene-modules).</p>
-<p>A common option is to employ the WGCNA method <span class="citation" data-cites="nA1Dql7o">[<a href="#ref-nA1Dql7o" role="doc-biblioref">6</a>]</span> or its adaptations <span class="citation" data-cites="15SSnrr1p">[<a href="#ref-15SSnrr1p" role="doc-biblioref">7</a>]</span> to identify co-expression modules.</p>
-<p>In principle, any of those modules could be used as input of multilayered clustering, and are alternatives for the first step of the fcoex pipeline.
-We note, though, that in contrast to unranked, large modules found by previous pipelines , fcoex modules makes it easy for domain experts to take advantage of the data.
-For example, in this work, a master’s student could pinpoint the 4 genes of the apela/Toddler pathway floating on an 18-gene gene set.
-He would surely have had more trouble finding a biologically meaningful association in a set with hundreds of genes.</p>
-<p>Fcoex streamlines the path from dataset to coexpression modules and to multi layered populations.</p>
-<p>The “cell type forests” obtained with the parallel reclustering of cells sheds light at higher orders of classifications.</p>
-<p>The approach supported our “rediscovery” of B-cells as both a cell type on their own, but also as a subclass of Antigen Presenting Cells.</p>
-<p>In that way, fcoex offers ways to explore data-driven classifications of cells, aligning itself with the challenges of the Human Cell Atlas and, specifically, of building ontologies of cell types in the single-cell era. (ADD REFERENCES)</p>
-<h1 id="methods">Methods</h1>
-<h2 id="data">Data</h2>
-<p>The pbmc3k dataset version 3.0.0 was downloaded via the SeuratData package (https://github.com/satijalab/seurat-data). The zebrafish development dataset was downloaded from the Broad Single Cell portal (https://singlecell.broadinstitute.org/single_cell/study/SCP162).</p>
+<p>Here we presented <code>fcoex</code>, a ready-to-use R/Bioconductor package for co-expression-based reclustering of single-cell RNA-seq data.</p>
+<p>We note that other methods are increasingly available for co-expression analysis of single cells.
+The monocle R package (https://www.nature.com/articles/nbt.2859), widely used for pseudotime analysis, has implemented algorithms for detecting co-expression modules (https://cole-trapnell-lab.github.io/monocle3/docs/differential/#gene-modules), and WGCNA, widely used in bulk transcriptomics, has also been applied to scRNAseq <span class="citation" data-cites="nA1Dql7o">[<a href="#ref-nA1Dql7o" role="doc-biblioref">8</a>]</span> <span class="citation" data-cites="15SSnrr1p">[<a href="#ref-15SSnrr1p" role="doc-biblioref">9</a>]</span>.</p>
+<p>In principle, any of those algorithms could be used as input for our framework (and we provide code showing how to integrate them to <code>fcoex</code>). We note, though, that fcoex modules are generally smaller and provide module header genes, making it a sensible first-pass approach to explore the multi-layered diversity in single-cell transcriptomics datasets.
+In that way, fcoex offers ways to explore data-driven classifications of cells, aligning itself with the challenges of the Human Cell Atlas and, specifically, of building ontologies of cell types in the single-cell era.</p>
+<h1 id="supplementary-methods">Supplementary Methods</h1>
 <h2 id="preprocessing">Preprocessing</h2>
 <h3 id="pbmc3k-dataset-preprocessing">pbmc3k dataset preprocessing</h3>
-<p>pbmc3k data was loaded as a Seurat object from the data package. The expression matrix in the “data” slot and the labels in the “Idents” slot as input for creating the fcoex object.</p>
-<h3 id="zebrafish-dataset-preprocessing">Zebrafish dataset preprocessing</h3>
-<p>The data downloaded as log2 transformed counts were loaded in a Seurat object and preprocessed as in Seurat’s 3.0 default tutorial. The resolution of the “FindClusters” function was arbitrarily set to yield 10-20 clusters. The normalized expression matrices, and the labels from the FindClusters function were used as input for the fcoex expression. Precise descriptions of the settings used are available in the source code for this paper on https://github.com/lubianat/fcoex_paper.</p>
+<p>pbmc3k data was loaded as a Seurat object from the SeuratData package. The expression matrix in the “data” slot and the labels in the “Idents” slot as input for creating the fcoex object.</p>
 <h1 id="gene-expression-discretization">Gene expression discretization</h1>
 <p>As the original Fast Correlation-Based Filter algorithm was constructed to deal with discrete data, we had to discretize gene counts. This was done with the fcoex package, version 1.0.0 (https://bioconductor.org/packages/fcoex/) We chose as a discretization metric a min-max-percent approach. For each gene, we took the lowest and the highest normalized value across the cells. We set a threshold at 25% of the max-min range. All the values below this threshold were considered “OFF,” and all above was “ON”.</p>
 <h1 id="identification-of-fcoex-modules">Identification of fcoex modules</h1>
@@ -219,38 +162,50 @@ Aviv Regev, Sarah Teichmann, Eric Lander, Amir Giladi, Christophe Benoist, Ewan 
 <em>eLife</em> (2017-12-05) <a href="https://www.wikidata.org/wiki/Q46368626">https://www.wikidata.org/wiki/Q46368626</a> <br />
 DOI: <a href="https://doi.org/10.7554/elife.27041">10.7554/elife.27041</a></p>
 </div>
+<div id="ref-WKbly37M">
+<p>2. <strong>Current best practices in single-cell RNA-seq analysis: a tutorial</strong> <br />
+Malte D. Luecken, Fabian J. Theis<br />
+<em>Molecular Systems Biology</em> (2019-06-19) <a href="https://www.wikidata.org/wiki/Q64974172">https://www.wikidata.org/wiki/Q64974172</a> <br />
+DOI: <a href="https://doi.org/10.15252/msb.20188746">10.15252/msb.20188746</a></p>
+</div>
 <div id="ref-1FLFdI7Pq">
-<p>2. <strong>A single-cell atlas of the airway epithelium reveals the CFTR-rich pulmonary ionocyte</strong> <br />
+<p>3. <strong>A single-cell atlas of the airway epithelium reveals the CFTR-rich pulmonary ionocyte</strong> <br />
 Lindsey W. Plasschaert, Rapolas Žilionis, Rayman Choo-Wing, Virginia Savova, Judith Knehr, Guglielmo Roma, Allon M. Klein, Aron B. Jaffe<br />
 <em>Nature</em> (2018-08-01) <a href="https://www.wikidata.org/wiki/Q57318689">https://www.wikidata.org/wiki/Q57318689</a> <br />
 DOI: <a href="https://doi.org/10.1038/s41586-018-0394-6">10.1038/s41586-018-0394-6</a></p>
 </div>
 <div id="ref-MmLAPJkE">
-<p>3. <strong>Conserved cell types with divergent features in human versus mouse cortex</strong> <br />
+<p>4. <strong>Conserved cell types with divergent features in human versus mouse cortex</strong> <br />
 Rebecca D. Hodge, Rebecca D. Hodge, Trygve E. Bakken, Jeremy A. Miller, Kimberly A. Smith, Eliza R. Barkan, Lucas T. Gray, Jennie L. Close, Brian R. Long, Nelson Johansen, … Ed S. Lein<br />
 <em>Nature</em> (2019-01-01) <a href="https://www.wikidata.org/wiki/Q71306466">https://www.wikidata.org/wiki/Q71306466</a> <br />
 DOI: <a href="https://doi.org/10.1038/s41586-019-1506-7">10.1038/s41586-019-1506-7</a></p>
 </div>
+<div id="ref-paKiKTRS">
+<p>5. <strong>What Is Your Conceptual Definition of “Cell Type” in the Context of a Mature Organism?</strong> <br />
+Paul Blainey, Hans Clevers, Cole Trapnell, Ed Lein, Emma Lundberg, Alfonso Martinez Arias, Joshua R. Sanes, Jay Shendure, James Eberwine, Junhyong Kim, … Mathias Uhlén<br />
+<em>Cell systems</em> (2017-03-01) <a href="https://www.wikidata.org/wiki/Q87649649">https://www.wikidata.org/wiki/Q87649649</a> <br />
+DOI: <a href="https://doi.org/10.1016/j.cels.2017.03.006">10.1016/j.cels.2017.03.006</a></p>
+</div>
 <div id="ref-1CI8uS6ka">
-<p>4. <strong>An ontology for cell types</strong> <br />
+<p>6. <strong>An ontology for cell types</strong> <br />
 Jonathan Bard, Sue Rhee, Michael Ashburner<br />
 <em>Genome Biology</em> (2005-01-01) <a href="https://www.wikidata.org/wiki/Q21184168">https://www.wikidata.org/wiki/Q21184168</a> <br />
 DOI: <a href="https://doi.org/10.1186/gb-2005-6-2-r21">10.1186/gb-2005-6-2-r21</a></p>
 </div>
 <div id="ref-47qvifzh">
-<p>5. <strong>A revised airway epithelial hierarchy includes CFTR-expressing ionocytes</strong> <br />
+<p>7. <strong>A revised airway epithelial hierarchy includes CFTR-expressing ionocytes</strong> <br />
 Daniel T. Montoro, Adam L. Haber, Moshe Biton, Vladimir Vinarsky, Brian Lin, Susan E. Birket, Feng Yuan, Sijia Chen, Hui Min Leung, Jorge Villoria, … Jayaraj Rajagopal<br />
 <em>Nature</em> (2018-08-01) <a href="https://www.wikidata.org/wiki/Q57318688">https://www.wikidata.org/wiki/Q57318688</a> <br />
 DOI: <a href="https://doi.org/10.1038/s41586-018-0393-7">10.1038/s41586-018-0393-7</a></p>
 </div>
 <div id="ref-nA1Dql7o">
-<p>6. <strong>WGCNA: an R package for weighted correlation network analysis</strong> <br />
+<p>8. <strong>WGCNA: an R package for weighted correlation network analysis</strong> <br />
 Peter Langfelder, Steve Horvath<br />
 <em>BMC Bioinformatics</em> (2008-01-01) <a href="https://www.wikidata.org/wiki/Q21284194">https://www.wikidata.org/wiki/Q21284194</a> <br />
 DOI: <a href="https://doi.org/10.1186/1471-2105-9-559">10.1186/1471-2105-9-559</a></p>
 </div>
 <div id="ref-15SSnrr1p">
-<p>7. <strong>webCEMiTool: Co-expression Modular Analysis Made Easy</strong> <br />
+<p>9. <strong>webCEMiTool: Co-expression Modular Analysis Made Easy</strong> <br />
 Lucas E. Cardozo, Pedro S. T. Russo, Bruno Gomes-Correia, Mariana Araujo-Pereira, Gonzalo Sepúlveda-Hermosilla, Vinicius Maracaja-Coutinho, Helder Nakaya<br />
 <em>Frontiers in Genetics</em> (2019-01-01) <a href="https://www.wikidata.org/wiki/Q62485122">https://www.wikidata.org/wiki/Q62485122</a> <br />
 DOI: <a href="https://doi.org/10.3389/fgene.2019.00146">10.3389/fgene.2019.00146</a></p>
