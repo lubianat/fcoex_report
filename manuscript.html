@@ -49,13 +49,13 @@
   <meta name="citation_fulltext_html_url" content="https://lubianat.github.io/fcoex_report/" />
   <meta name="citation_pdf_url" content="https://lubianat.github.io/fcoex_report/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://lubianat.github.io/fcoex_report/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://lubianat.github.io/fcoex_report/v/f1cd8ebc244cc817d8c5f072b4b1b76772b9c443/" />
-  <meta name="manubot_html_url_versioned" content="https://lubianat.github.io/fcoex_report/v/f1cd8ebc244cc817d8c5f072b4b1b76772b9c443/" />
-  <meta name="manubot_pdf_url_versioned" content="https://lubianat.github.io/fcoex_report/v/f1cd8ebc244cc817d8c5f072b4b1b76772b9c443/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://lubianat.github.io/fcoex_report/v/bb7fe23800e47b5c9655760486c619015ef3647c/" />
+  <meta name="manubot_html_url_versioned" content="https://lubianat.github.io/fcoex_report/v/bb7fe23800e47b5c9655760486c619015ef3647c/" />
+  <meta name="manubot_pdf_url_versioned" content="https://lubianat.github.io/fcoex_report/v/bb7fe23800e47b5c9655760486c619015ef3647c/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
-  <meta property="og:image" content="https://github.com/lubianat/fcoex_report/raw/f1cd8ebc244cc817d8c5f072b4b1b76772b9c443/content/images/name.png" />
-  <meta property="twitter:image" content="https://github.com/lubianat/fcoex_report/raw/f1cd8ebc244cc817d8c5f072b4b1b76772b9c443/content/images/name.png" />
+  <meta property="og:image" content="https://github.com/lubianat/fcoex_report/raw/bb7fe23800e47b5c9655760486c619015ef3647c/content/images/name.png" />
+  <meta property="twitter:image" content="https://github.com/lubianat/fcoex_report/raw/bb7fe23800e47b5c9655760486c619015ef3647c/content/images/name.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
   <link rel="mask-icon" href="https://manubot.org/safari-pinned-tab.svg" color="#ad1457" />
   <meta name="theme-color" content="#ad1457" />
@@ -67,9 +67,9 @@
 </header>
 <p><small><em>
 This manuscript
-(<a href="https://lubianat.github.io/fcoex_report/v/f1cd8ebc244cc817d8c5f072b4b1b76772b9c443/">permalink</a>)
+(<a href="https://lubianat.github.io/fcoex_report/v/bb7fe23800e47b5c9655760486c619015ef3647c/">permalink</a>)
 was automatically generated
-from <a href="https://github.com/lubianat/fcoex_report/tree/f1cd8ebc244cc817d8c5f072b4b1b76772b9c443">lubianat/fcoex_report@f1cd8eb</a>
+from <a href="https://github.com/lubianat/fcoex_report/tree/bb7fe23800e47b5c9655760486c619015ef3647c">lubianat/fcoex_report@bb7fe23</a>
 on May 14, 2021.
 </em></small></p>
 <h2 id="authors">Authors</h2>
@@ -91,14 +91,10 @@ Department of Clinical and Toxicological Analyses, School of Pharmaceutical Scie
 </ul>
 <h2 class="page_break_before" id="abstract">Abstract</h2>
 <h1 id="introduction">Introduction</h1>
-<p>Single-cell RNA sequencing (scRNA-seq) data analysis is at the core of the current quest to describe all human cell types. <span class="citation" data-cites="1GmbExweg">[<a href="#ref-1GmbExweg" role="doc-biblioref">1</a>]</span> The annotation of cell events in scRNA-seq is commonly done using some variation of the following steps <span class="citation" data-cites="WKbly37M">[<a href="#ref-WKbly37M" role="doc-biblioref">2</a>]</span>:</p>
-<ul>
-<li>Cluster cells,</li>
-<li>Annotate clusters based on known markers.</li>
-</ul>
-<p>Clusters (and their markers) are a prime tool for the discovery new groupings with biological relevance. Fine-grained Louvain clustering with can highlight out rare, uniform population like the newly identified airway ionocytes. <span class="citation" data-cites="1FLFdI7Pq">[<a href="#ref-1FLFdI7Pq" role="doc-biblioref">3</a>]</span> <span class="citation" data-cites="1FLFdI7Pq">[<a href="#ref-1FLFdI7Pq" role="doc-biblioref">3</a>]</span> Complementarily, hierarchical clustering provides multilevel perspective on cell identity, providing knowledge on upper cell classes, prone for ontology building<span class="citation" data-cites="MmLAPJkE">[<a href="#ref-MmLAPJkE" role="doc-biblioref">4</a>]</span>)</p>
-<p>While such methodologies are already powerful, we identified a gap: current works seldom explore the multi-hierarchy clustering. Biologists are used to tree-like; single-hierarchy classifications, such as the so-called tree-of-life. That tree-like structure rises as a natural side-effect of the macroevolutionary process of vertebrates, where species give rise to one (or more) others. Cell type classifications, however, are functional in essence <span class="citation" data-cites="paKiKTRS">[<a href="#ref-paKiKTRS" role="doc-biblioref">5</a>]</span> and, thus, do not need to be tree-like. In fact, formal ontologies of cell types (like the Cell Ontology) catalog many cell types with multiple direct parents. <span class="citation" data-cites="1CI8uS6ka">[<a href="#ref-1CI8uS6ka" role="doc-biblioref">6</a>]</span> <span class="citation" data-cites="47qvifzh">[<a href="#ref-47qvifzh" role="doc-biblioref">7</a>]</span></p>
-<p>Towards that goal, we build <em>fcoex</em>, an R package that builds coexpression networks as an scaffold for hypothesis generation about cell types, and describe its application to some datasets.</p>
+<p>Single-cell RNA sequencing (scRNA-seq) data analysis is at the core of the current quest to describe all human cell types. <span class="citation" data-cites="1GmbExweg">[<a href="#ref-1GmbExweg" role="doc-biblioref">1</a>]</span> The annotation of cell events in scRNA-seq is commonly done by clustering single cells and manually identifying cell types on the dataset. <span class="citation" data-cites="WKbly37M">[<a href="#ref-WKbly37M" role="doc-biblioref">2</a>]</span>:</p>
+<p>Clusters (and their markers) are a prime tool for discovering new groupings with biological relevance. Fine-grained Louvain clustering can highlight out rare, uniform population like the newly identified airway ionocytes. <span class="citation" data-cites="1FLFdI7Pq">[<a href="#ref-1FLFdI7Pq" role="doc-biblioref">3</a>]</span> <span class="citation" data-cites="1FLFdI7Pq">[<a href="#ref-1FLFdI7Pq" role="doc-biblioref">3</a>]</span> Complementarily, hierarchical clustering provides a multilevel perspective on cell identity, providing knowledge on upper cell classes, prone for ontology building<span class="citation" data-cites="MmLAPJkE">[<a href="#ref-MmLAPJkE" role="doc-biblioref">4</a>]</span>)</p>
+<p>While such methodologies are already powerful, we identified a gap: current works seldom explore the multi-hierarchy clustering. Biologists are used to tree-like; single-hierarchy classifications, such as the so-called tree-of-life. That tree-like structure rises as a natural side-effect of the macroevolutionary process of vertebrates, where species give rise to one (or more) others. Cell type classifications, however, are functional in essence<span class="citation" data-cites="paKiKTRS">[<a href="#ref-paKiKTRS" role="doc-biblioref">5</a>]</span> and, thus, do not need to be tree-like. In fact, formal ontologies of cell types (like the Cell Ontology) catalog many cell types with multiple direct parents. <span class="citation" data-cites="1CI8uS6ka">[<a href="#ref-1CI8uS6ka" role="doc-biblioref">6</a>]</span> <span class="citation" data-cites="47qvifzh">[<a href="#ref-47qvifzh" role="doc-biblioref">7</a>]</span></p>
+<p>We build fcoex, an R package that builds coexpression networks as an scaffold for multi-hierarchy classification of cell types, and describe its application to some datasets.</p>
 <h1 id="results">Results</h1>
 <h2 id="the-fcoex-method">The fcoex method</h2>
 <p>The <em>fcoex</em> tool was built from first principles to provide better understandability. Our first goal was to develop a smaller set of genes that globally captured the cellular diversity of a dataset.</p>
@@ -124,35 +120,32 @@ Each module has one “header” gene, which expression pattern is most represen
 <p>For example, module M8, containing cytotoxicity genes as PRF1 and GZMA, split the dataset into cytotoxic (NK and CD8) and non-cytotoxic cells. M2 (CD3D) split the dataset clearly in T-cells and non-T-cells. M5 (HLA-DRB1) grouped monocytes, B cells, and dendritic cells, all known antigen-presenting cells (APC) (https://www.ebi.ac.uk/ols/ontologies/cl/terms?obo_id=CL:0000145).</p>
 <p>In general, fcoex clusters combined biologically similar cell types of the original dataset. The clusterings, then, help to explore and classify upper cell classes by function. Even in that super well-studied dataset, <code>fcoex</code> provided a new light on the shared functionality of some NK cells and macrophages: they both markedly express the CD16-coding gene FCGR3A, whose product is a key player in Antibody-dependent cellular cytotoxicity (ADCC). Thus, a complete functional classification of cells might want to include an ’ADCC-performing cells" class.</p>
 <h1 id="discussion">Discussion</h1>
-<p>Here we presented <code>fcoex</code>, a ready-to-use R/Bioconductor package for co-expression-based reclustering of single-cell RNA-seq data.</p>
-<p>We note that other methods are increasingly available for co-expression analysis of single cells.
-The monocle R package (https://www.nature.com/articles/nbt.2859), widely used for pseudotime analysis, has implemented algorithms for detecting co-expression modules (https://cole-trapnell-lab.github.io/monocle3/docs/differential/#gene-modules), and WGCNA, widely used in bulk transcriptomics, has also been applied to scRNAseq <span class="citation" data-cites="nA1Dql7o">[<a href="#ref-nA1Dql7o" role="doc-biblioref">8</a>]</span> <span class="citation" data-cites="15SSnrr1p">[<a href="#ref-15SSnrr1p" role="doc-biblioref">9</a>]</span>.</p>
+<p>Here we presented fcoex, a ready-to-use R/Bioconductor package for co-expression-based reclustering of single-cell RNA-seq data.
+We note that other methods are increasingly available for co-expression analysis of single cells. The monocle R package <span class="citation" data-cites="xQ8VDUnJ">[<a href="#ref-xQ8VDUnJ" role="doc-biblioref">8</a>]</span>, widely used for pseudotime analysis, has implemented algorithms for detecting co-expression modules (<a href="https://cole-trapnell-lab.github.io/monocle3/docs/differential/#gene-modules" class="uri">https://cole-trapnell-lab.github.io/monocle3/docs/differential/#gene-modules</a>), and WGCNA, widely used in bulk transcriptomics, has also been applied to scRNA-seq <span class="citation" data-cites="nA1Dql7o">[<a href="#ref-nA1Dql7o" role="doc-biblioref">9</a>]</span> <span class="citation" data-cites="15SSnrr1p">[<a href="#ref-15SSnrr1p" role="doc-biblioref">10</a>]</span>.</p>
 <p>In principle, any of those algorithms could be used as input for our framework (and we provide code showing how to integrate them to <code>fcoex</code>). We note, though, that fcoex modules are generally smaller and provide module header genes, making it a sensible first-pass approach to explore the multi-layered diversity in single-cell transcriptomics datasets.
 In that way, fcoex offers ways to explore data-driven classifications of cells, aligning itself with the challenges of the Human Cell Atlas and, specifically, of building ontologies of cell types in the single-cell era.</p>
 <h1 id="supplementary-methods">Supplementary Methods</h1>
 <h2 id="preprocessing">Preprocessing</h2>
 <h3 id="pbmc3k-dataset-preprocessing">pbmc3k dataset preprocessing</h3>
-<p>pbmc3k data was loaded as a Seurat object from the SeuratData package. The expression matrix in the “data” slot and the labels in the “Idents” slot as input for creating the fcoex object.</p>
+<p><strong>pbmc3k</strong> was loaded as a Seurat object from the SeuratData package. The expression matrix in the “data” slot and the labels in the “Idents” slot as input for creating the <em>fcoex</em> object.</p>
 <h1 id="gene-expression-discretization">Gene expression discretization</h1>
-<p>As the original Fast Correlation-Based Filter algorithm was constructed to deal with discrete data, we had to discretize gene counts. This was done with the fcoex package, version 1.0.0 (https://bioconductor.org/packages/fcoex/) We chose as a discretization metric a min-max-percent approach. For each gene, we took the lowest and the highest normalized value across the cells. We set a threshold at 25% of the max-min range. All the values below this threshold were considered “OFF,” and all above was “ON”.</p>
-<h1 id="identification-of-fcoex-modules">Identification of fcoex modules</h1>
+<p>As the original Fast Correlation-Based Filter <span class="citation" data-cites="cFQY1evO">[<a href="#ref-cFQY1evO" role="doc-biblioref">11</a>]</span> algorithm was constructed to deal with discrete data, we had to discretize gene counts. We chose as a discretization metric a min-max-percent approach. For each gene, we took the lowest and the highest normalized value across the cells. We set a threshold at 25% of the max-min range. All the values below this threshold were considered “OFF,” and all above was “ON”.</p>
+<h1 id="identification-of-fcoex-modules">Identification of <em>fcoex</em> modules</h1>
 <h2 id="filtering-genes-by-correlation-to-labels">Filtering genes by correlation to labels</h2>
-<p>After the discretization step, genes were ranked by their correlation to labels (previously assigned by Seurat’s 3.1 FindClusters function). The correlation metric we used was the nonlinear Symmetrical Uncertainty, a variation of mutual information that maps the values between 0 (worst) and 1 (best), and accounts for differences in entropy ranges that arise when variables have a different number of classes (number of labels and number of gene classes). All downstream steps were performed only with the previously filtered genes</p>
-<h2 id="finding-predominantly-correlated-module-seeds">Finding predominantly-correlated module seeds</h2>
-<p>Modules were built in a bottom-up approach, first selecting genes predominantly correlated to the labels - a higher symmetrical uncertainty score towards the labels than towards any other gene. These genes, that are the output of the Fast Correlation-Based Filter algorithm, are called the module seeds.</p>
-<h2 id="building-the-coexpression-modulescommunities">Building the coexpression modules/communities</h2>
-<p>Each module M is composed of one module seed (x) predominantly-correlated to the label (L) and all the genes (Yi) more correlated to the seed than to the label.</p>
-<p>In other words, a gene Yi from all the genes in the Y universe of all genes in the dataset belongs to a module M headed by gene x if and only if it is more correlated to a gene x (from the set X of module seeds) than to the labels.</p>
-<pre><code>In practice, the algorithm builds an all x all correlation matrix, the adjacency matrix of the co-expression network. This adjacency matrix is then trimmed, and edges between nodes Yi and Yj are removed from the network iff SU(Yi, Yj) &lt; SU(Yi, L) or SU(Yi, Yj) &lt; SU(Yj, L). </code></pre>
-<p>1.1 Over-representation analysis
-We performed an over-representation analysis on the human PBMC dataset by Reactome Pathway gene sets processed locally prior to data analysis (“Reactome - a Curated Knowledgebase of Biological Pathways,” n.d.). Visualizations in the fcoex package were adapted from the CEMiTool R package (Russo et al. 2018)</p>
+<p>After the discretization step, genes were ranked by their correlation to labels previously assigned by the Seurat Data team. The correlation metric we used was the nonlinear Symmetrical Uncertainty, a variation of mutual information that maps the values between 0 (worst) and 1 (best), and accounts for differences in entropy ranges that arise when variables have a different number of classes (number of labels and number of gene classes). All downstream steps were performed only with the previously filtered genes</p>
+<h2 id="building-the-coexpression-network">Building the coexpression network</h2>
+<p>Each module M is composed of one module seed (x) predominantly-correlated to the label (L) and all the genes (Yi) more correlated to the seed than to the label.
+In practice, the algorithm builds an all x all correlation matrix by symmetrical uncetainty, the adjacency matrix of the co-expression network. This adjacency matrix is then trimmed, and edges between nodes Yi and Yj are removed from the network iff SU(Yi, Yj) &lt; SU(Yi, L) or SU(Yi, Yj) &lt; SU(Yj, L).
+Inferring coexpression modules
+Modules were built in a bottom-up approach, first selecting genes predominantly correlated to the labels. These genes are the output of the Fast Correlation-Based Filter (FCBF) algorithm for feature selection.
+Each selected featured forms a new cluster, corresponding to all the genes associated to it in the trimmed network. The modules formed in that way are fuzzy, as a gene might belong to several modules.</p>
 <h2 id="reclustering-of-cells">Reclustering of cells</h2>
-<pre><code>To recluster the cells based on each module, we use the “recluster” function of the fcoex module. It uses the gene sets in each co-expression community to subset the expression table given originally as input. This reduced table contains the expression values regarding those genes for all the cells in the dataset.
-The distances between cells in this reduced matrix was calculated by the manhattan distance, and hierarchical clustering was performed. The metric used to calculate the linkage distance between groups was the “ward.D2” metric as implemented in the hclust function of the stats package in R 3.6.1. Two groups of cells were retrieved from each  clustering (the k parameter was set to 2) . The cluster with a higher expression of the module seed was labeled as SP (Seed Positive) and the complementary cluster received, then, the label SN (Seed Negative). Plots were generated via the DimPlot function of the Seurat package, substituting labels of the Seurat object for the new ones. </code></pre>
-<h2 id="code-availability">Code availability</h2>
-<p>The fcoex package, which performs the coexpression analysis is available at http://bioconductor.org/packages/fcoex/. The discretization and feature selection algorithms are available in a second package, FCBF (http://bioconductor.org/packages/FCBF/). All the analyses performed for this work are available at https://github.com/lubianat/fcoex paper.</p>
+<p>To recluster the cells based on each module, we use the “recluster” function of the <em>fcoex</em> module. It uses the gene sets in each co-expression community to subset the expression table given originally as input. This reduced table contains the expression values regarding those genes for all the cells in the dataset.
+The distances between cells in this reduced matrix was calculated by the manhattan distance, and hierarchical clustering was performed. The metric used to calculate the linkage distance between groups was the “ward.D2” metric as implemented in the hclust function of the stats package in R 3.6.1. Two groups of cells were retrieved from each clustering (the k parameter was set to 2) .
+## Code availability
+The <em>fcoex</em> package, which performs the coexpression analysis is available at <a href="http://bioconductor.org/packages/fcoex/" class="uri">http://bioconductor.org/packages/fcoex/</a>. The discretization and feature selection algorithms are available in a second package, FCBF (<a href="http://bioconductor.org/packages/FCBF/" class="uri">http://bioconductor.org/packages/FCBF/</a>). All the analyses performed for this work are available at &lt;https://github.com/lubianat/fcoex paper&gt;.</p>
 <h1 id="acknowledgments">Acknowledgments</h1>
-<p>We would like to thank Pedro Russo, Gustavo Ferreira and Lucas Cardozo for contributions to software development, as well as all members of the Computational Systems Biology Laboratory for discussions and feedback. This work was supported by the grant 2018/10257-2, São Paulo Research Foundation (FAPESP).</p>
+<p>We would like to thank Pedro Russo, Gustavo Ferreira and Lucas Cardozo for contributions to software development, as well as all members of the Computational Systems Biology Laboratory for discussions and feedback. This work was supported by grants 2018/10257-2 and 2019/26284-1, São Paulo Research Foundation (FAPESP).</p>
 <h2 class="page_break_before" id="references">References</h2>
 <!-- Explicitly insert bibliography here -->
 <div id="refs" class="references hanging-indent" role="doc-bibliography">
@@ -198,17 +191,28 @@ Daniel T. Montoro, Adam L. Haber, Moshe Biton, Vladimir Vinarsky, Brian Lin, Sus
 <em>Nature</em> (2018-08-01) <a href="https://www.wikidata.org/wiki/Q57318688">https://www.wikidata.org/wiki/Q57318688</a> <br />
 DOI: <a href="https://doi.org/10.1038/s41586-018-0393-7">10.1038/s41586-018-0393-7</a></p>
 </div>
+<div id="ref-xQ8VDUnJ">
+<p>8. <strong>The dynamics and regulators of cell fate decisions are revealed by pseudotemporal ordering of single cells.</strong> <br />
+Cole Trapnell, Davide Cacchiarelli, Jonna Grimsby, Prapti Pokharel, Shuqiang Li, Michael Morse, Niall J. Lennon, Kenneth J. Livak, Tarjei S. Mikkelsen, John L. Rinn<br />
+<em>Nature Biotechnology</em> (2014-03-23) <a href="https://www.wikidata.org/wiki/Q41861103">https://www.wikidata.org/wiki/Q41861103</a> <br />
+DOI: <a href="https://doi.org/10.1038/nbt.2859">10.1038/nbt.2859</a></p>
+</div>
 <div id="ref-nA1Dql7o">
-<p>8. <strong>WGCNA: an R package for weighted correlation network analysis</strong> <br />
+<p>9. <strong>WGCNA: an R package for weighted correlation network analysis</strong> <br />
 Peter Langfelder, Steve Horvath<br />
 <em>BMC Bioinformatics</em> (2008-01-01) <a href="https://www.wikidata.org/wiki/Q21284194">https://www.wikidata.org/wiki/Q21284194</a> <br />
 DOI: <a href="https://doi.org/10.1186/1471-2105-9-559">10.1186/1471-2105-9-559</a></p>
 </div>
 <div id="ref-15SSnrr1p">
-<p>9. <strong>webCEMiTool: Co-expression Modular Analysis Made Easy</strong> <br />
+<p>10. <strong>webCEMiTool: Co-expression Modular Analysis Made Easy</strong> <br />
 Lucas E. Cardozo, Pedro S. T. Russo, Bruno Gomes-Correia, Mariana Araujo-Pereira, Gonzalo Sepúlveda-Hermosilla, Vinicius Maracaja-Coutinho, Helder Nakaya<br />
 <em>Frontiers in Genetics</em> (2019-01-01) <a href="https://www.wikidata.org/wiki/Q62485122">https://www.wikidata.org/wiki/Q62485122</a> <br />
 DOI: <a href="https://doi.org/10.3389/fgene.2019.00146">10.3389/fgene.2019.00146</a></p>
+</div>
+<div id="ref-cFQY1evO">
+<p>11. <strong>Feature Selection for High-Dimensional Data: A Fast Correlation-Based Filter Solution</strong> <br />
+Lei Yu, Huan Liu<br />
+<a href="https://www.wikidata.org/wiki/Q106704674">https://www.wikidata.org/wiki/Q106704674</a></p>
 </div>
 </div>
 <!-- default theme -->
