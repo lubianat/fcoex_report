@@ -49,13 +49,13 @@
   <meta name="citation_fulltext_html_url" content="https://lubianat.github.io/fcoex_report/" />
   <meta name="citation_pdf_url" content="https://lubianat.github.io/fcoex_report/manuscript.pdf" />
   <link rel="alternate" type="application/pdf" href="https://lubianat.github.io/fcoex_report/manuscript.pdf" />
-  <link rel="alternate" type="text/html" href="https://lubianat.github.io/fcoex_report/v/bb7fe23800e47b5c9655760486c619015ef3647c/" />
-  <meta name="manubot_html_url_versioned" content="https://lubianat.github.io/fcoex_report/v/bb7fe23800e47b5c9655760486c619015ef3647c/" />
-  <meta name="manubot_pdf_url_versioned" content="https://lubianat.github.io/fcoex_report/v/bb7fe23800e47b5c9655760486c619015ef3647c/manuscript.pdf" />
+  <link rel="alternate" type="text/html" href="https://lubianat.github.io/fcoex_report/v/ce7a7233f3da008b408bd6cab5180b4417815bc7/" />
+  <meta name="manubot_html_url_versioned" content="https://lubianat.github.io/fcoex_report/v/ce7a7233f3da008b408bd6cab5180b4417815bc7/" />
+  <meta name="manubot_pdf_url_versioned" content="https://lubianat.github.io/fcoex_report/v/ce7a7233f3da008b408bd6cab5180b4417815bc7/manuscript.pdf" />
   <meta property="og:type" content="article" />
   <meta property="twitter:card" content="summary_large_image" />
-  <meta property="og:image" content="https://github.com/lubianat/fcoex_report/raw/bb7fe23800e47b5c9655760486c619015ef3647c/content/images/name.png" />
-  <meta property="twitter:image" content="https://github.com/lubianat/fcoex_report/raw/bb7fe23800e47b5c9655760486c619015ef3647c/content/images/name.png" />
+  <meta property="og:image" content="https://github.com/lubianat/fcoex_report/raw/ce7a7233f3da008b408bd6cab5180b4417815bc7/content/images/name.png" />
+  <meta property="twitter:image" content="https://github.com/lubianat/fcoex_report/raw/ce7a7233f3da008b408bd6cab5180b4417815bc7/content/images/name.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="https://manubot.org/favicon-192x192.png" />
   <link rel="mask-icon" href="https://manubot.org/safari-pinned-tab.svg" color="#ad1457" />
   <meta name="theme-color" content="#ad1457" />
@@ -67,9 +67,9 @@
 </header>
 <p><small><em>
 This manuscript
-(<a href="https://lubianat.github.io/fcoex_report/v/bb7fe23800e47b5c9655760486c619015ef3647c/">permalink</a>)
+(<a href="https://lubianat.github.io/fcoex_report/v/ce7a7233f3da008b408bd6cab5180b4417815bc7/">permalink</a>)
 was automatically generated
-from <a href="https://github.com/lubianat/fcoex_report/tree/bb7fe23800e47b5c9655760486c619015ef3647c">lubianat/fcoex_report@bb7fe23</a>
+from <a href="https://github.com/lubianat/fcoex_report/tree/ce7a7233f3da008b408bd6cab5180b4417815bc7">lubianat/fcoex_report@ce7a723</a>
 on May 14, 2021.
 </em></small></p>
 <h2 id="authors">Authors</h2>
@@ -96,29 +96,24 @@ Department of Clinical and Toxicological Analyses, School of Pharmaceutical Scie
 <p>While such methodologies are already powerful, we identified a gap: current works seldom explore the multi-hierarchy clustering. Biologists are used to tree-like; single-hierarchy classifications, such as the so-called tree-of-life. That tree-like structure rises as a natural side-effect of the macroevolutionary process of vertebrates, where species give rise to one (or more) others. Cell type classifications, however, are functional in essence<span class="citation" data-cites="paKiKTRS">[<a href="#ref-paKiKTRS" role="doc-biblioref">5</a>]</span> and, thus, do not need to be tree-like. In fact, formal ontologies of cell types (like the Cell Ontology) catalog many cell types with multiple direct parents. <span class="citation" data-cites="1CI8uS6ka">[<a href="#ref-1CI8uS6ka" role="doc-biblioref">6</a>]</span> <span class="citation" data-cites="47qvifzh">[<a href="#ref-47qvifzh" role="doc-biblioref">7</a>]</span></p>
 <p>We build fcoex, an R package that builds coexpression networks as an scaffold for multi-hierarchy classification of cell types, and describe its application to some datasets.</p>
 <h1 id="results">Results</h1>
-<h2 id="the-fcoex-method">The fcoex method</h2>
-<p>The <em>fcoex</em> tool was built from first principles to provide better understandability. Our first goal was to develop a smaller set of genes that globally captured the cellular diversity of a dataset.</p>
-<p>For that, we decided to explore feature selection by <em>symmetrical uncertainty</em>, the correlation metric of FCBF, a popular feature selection algorithm for machine learning (over 2700 Google Scholar citations) with little previous use in biomedical sciences (8 PubMed results for “FCBF” as of April 2021).</p>
-<p>Symmetrical uncertainty relies on entropy (in the information-theory sense), which relies on categories for calculation. Thus, we implemented a set of heuristics to binarize gene expressions (https://bioconductor.org/packages/release/bioc/html/FCBF.html) which can be accessed via the <code>fcoex::discretize()</code> function.</p>
-<p>As mutual information is a supervised method, <code>fcoex</code> also needs pre-made cluster assignments obtained after running a standard scRNA-seq clustering pipeline. Cluster assignments convey information about the relations between cells and help to guide feature selection.</p>
-<p><code>Fcoex</code>, then, selects genes global markers, which might be specific to 1, 2, or more clusters; the common factor is that they provide information to tell clusters apart.</p>
-<p>To find the coexpression-module, we inverted the FCBF redundancy removal algorithm as a heuristic to find redundant (co-expressed) gene expression patterns. (see Supplementary Methods for details).</p>
-<p>The gene coexpression modules yielded by the pipeline are small by design (10s of genes per module), so to facilitate manual exploration of the coexpression landscape.
-Each module has one “header” gene, which expression pattern is most representative of the genes in the module.</p>
-<p>The ultimate goal of the <em>fcoex</em> pipeline is not necessarily the modules but to find biologically relevant populations.</p>
-<p>Modules contain correlated and anti-correlated genes and thus might hold signatures for two different populations.</p>
-<p>Fcoex treats each module as a gene set to find cell populations. It then uses only the expression of genes in the module to re-classify the cells.</p>
-<p>After projecting the pipelines, we intend to verify if the modules captured complimentary views on cell identities comparatively to the Seurat clustering pipeline.</p>
+<h2 id="the_fcoex_-method">The_fcoex_ method</h2>
+<p>The_fcoex_ tool was built from first principles to provide better understandability. Our first goal was to develop a smaller set of genes that globally captured the cellular diversity of a dataset.
+For that, we decided to explore feature selection by symmetrical uncertainty, the correlation metric of FCBF, a popular feature selection algorithm for machine learning with little previous use in biomedical sciences . Symmetrical uncertainty relies on entropy (in the information-theory sense), which relies on categories for calculation. Thus, we implemented a set of heuristics to binarize gene expressions which can be accessed via the_fcoex_::discretize() function.</p>
 <div id="fig:overview" class="fignos">
 <figure>
-<img src="images/fcoex_overview.png" class="white" style="height:7in" alt="" /><figcaption><span>Figure 1:</span> Overview</figcaption>
+<img src="images/fcoex_overview.png" class="white" style="height:7in" alt="" /><figcaption><span>Figure 1:</span> <strong>Reclustering based on co-expression modules sheds light on cell diversity.</strong>
+The pre-labeled pbmc3k dataset, with original, SeuratData labels. B)<em>fcoex</em> coexpression modules capture patterns across PBMC populations. C-D) Module-based reclustering shows groupings of original clusters, visible both via UMAP projection and cluster x cluster heatmap. E) Upper-level, multilayer classification of the pbmc3k dataset based on_fcoex_ modules.</figcaption>
 </figure>
 </div>
-<h2 id="fcoex-recovers-multi-hierarchy-of-blood-types">fcoex recovers multi-hierarchy of blood types</h2>
-<p>To validate the fcoex pipeline, we selected the well-known pbmc3k dataset from SeuratData, which contains around 2700 peripheral blood mononuclear cells (PBMC) with author-defined cluster labels.</p>
-<p>The standard fcoex pipeline detected nine modules that capture different parts of the cellular diversity in the dataset.</p>
-<p>For example, module M8, containing cytotoxicity genes as PRF1 and GZMA, split the dataset into cytotoxic (NK and CD8) and non-cytotoxic cells. M2 (CD3D) split the dataset clearly in T-cells and non-T-cells. M5 (HLA-DRB1) grouped monocytes, B cells, and dendritic cells, all known antigen-presenting cells (APC) (https://www.ebi.ac.uk/ols/ontologies/cl/terms?obo_id=CL:0000145).</p>
-<p>In general, fcoex clusters combined biologically similar cell types of the original dataset. The clusterings, then, help to explore and classify upper cell classes by function. Even in that super well-studied dataset, <code>fcoex</code> provided a new light on the shared functionality of some NK cells and macrophages: they both markedly express the CD16-coding gene FCGR3A, whose product is a key player in Antibody-dependent cellular cytotoxicity (ADCC). Thus, a complete functional classification of cells might want to include an ’ADCC-performing cells" class.</p>
+<p>As mutual information is a supervised method,<em>fcoex</em> also needs pre-made cluster assignments obtained after running a standard scRNA-seq clustering pipeline (Fig. 1A). Cluster assignments convey information about the relations between cells and help to guide feature selection.</p>
+<p>Fcoex, then, selects genes global markers, which might be specific to 1, 2, or more clusters; the common factor is that they provide information to tell clusters apart.
+To find the coexpression-module, we inverted the FCBF redundancy removal algorithm as a heuristic to find redundant (co-expressed) gene expression patterns. (see Supplementary Methods for details).</p>
+<p>The gene coexpression modules yielded by the pipeline are small by design (10s of genes per module), so to facilitate manual exploration of the coexpression landscape. Each module has one “header” gene, which expression pattern is most representative of the genes in the module.</p>
+<p>The ultimate goal of the_fcoex_ pipeline is not necessarily the modules but to find biologically relevant populations._fcoex_ treats each module as a gene set to find cell populations, using only their expression the module to re-classify the cells. The new classifications offer a platform for the biomedical research to gather new insights on the dataset, as exemplified in Figure 1.</p>
+<h2 id="fcoex-recovers-multi-hierarchy-of-blood-types"><em>fcoex</em> recovers multi-hierarchy of blood types</h2>
+<p>To validate the_fcoex_ pipeline, we selected the well-known pbmc3k dataset from SeuratData, which contains around 2700 peripheral blood mononuclear cells (PBMC) with previously-defined cluster labels.</p>
+<p>The standard_fcoex_ pipeline detected nine modules that capture different parts of the cellular diversity in the dataset. For example, module M8, containing cytotoxicity genes as PRF1 and GZMA, split the dataset into cytotoxic (NK and CD8) and non-cytotoxic cells. M2 (CD3D) split the dataset clearly in T-cells and non-T-cells. M5 (HLA-DRB1) grouped monocytes, B cells, and dendritic cells, all known antigen-presenting cells (APC). (Fig. 1D-E)</p>
+<p>In general,<em>fcoex</em> clusters combined biologically similar cell types of the original dataset. The clusterings, then, help to explore and classify upper cell classes by function (Fig. 1E). Even in that super well-studied dataset,<em>fcoex</em> provided a new light on the shared functionality of some NK cells and macrophages: they both markedly express the CD16-coding gene FCGR3A, whose product is a key player in Antibody-dependent cellular cytotoxicity (ADCC). Thus, a complete functional classification of cells might want to include an ’ADCC-performing cells" class.</p>
 <h1 id="discussion">Discussion</h1>
 <p>Here we presented fcoex, a ready-to-use R/Bioconductor package for co-expression-based reclustering of single-cell RNA-seq data.
 We note that other methods are increasingly available for co-expression analysis of single cells. The monocle R package <span class="citation" data-cites="xQ8VDUnJ">[<a href="#ref-xQ8VDUnJ" role="doc-biblioref">8</a>]</span>, widely used for pseudotime analysis, has implemented algorithms for detecting co-expression modules (<a href="https://cole-trapnell-lab.github.io/monocle3/docs/differential/#gene-modules" class="uri">https://cole-trapnell-lab.github.io/monocle3/docs/differential/#gene-modules</a>), and WGCNA, widely used in bulk transcriptomics, has also been applied to scRNA-seq <span class="citation" data-cites="nA1Dql7o">[<a href="#ref-nA1Dql7o" role="doc-biblioref">9</a>]</span> <span class="citation" data-cites="15SSnrr1p">[<a href="#ref-15SSnrr1p" role="doc-biblioref">10</a>]</span>.</p>
